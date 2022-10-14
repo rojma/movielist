@@ -1,19 +1,16 @@
 import { HandThumbUpIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import { forwardRef } from 'react';
 
-const Thumbnail = forwardRef(({ data }: any, ref) => {
+const Thumbnail = ({ data }: any) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original';
   return (
-    <div
-      ref={ref}
-      className='group transform cursor-pointer p-2 transition duration-200 ease-in hover:z-50 sm:hover:scale-105'
-    >
+    <div className='group transform cursor-pointer p-2 transition duration-200 ease-in hover:z-50 sm:hover:scale-105'>
       <Image
         src={
           `${BASE_URL}${data.backdrop_path || data.poster_path}` ||
           `${BASE_URL}${data.poster_path}`
         }
+        alt=''
         layout='responsive'
         height={1080}
         width={1920}
@@ -31,5 +28,5 @@ const Thumbnail = forwardRef(({ data }: any, ref) => {
       </div>
     </div>
   );
-});
+};
 export default Thumbnail;
