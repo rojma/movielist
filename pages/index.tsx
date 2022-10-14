@@ -29,9 +29,11 @@ export default Home;
 
 export async function getServerSideProps({ query }: any) {
   const genre = query.genre;
+  const aa: any = requests;
+  const requestData: any = aa[genre];
   const request = await fetch(
     `https://api.themoviedb.org/3${
-      requests[genre]?.url || requests.fetchTrending?.url
+      requestData?.url || requests.fetchTrending?.url
     }`
   ).then((res) => res.json());
 
